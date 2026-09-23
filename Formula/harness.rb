@@ -1,6 +1,7 @@
 # 전역 `harness` 명령을 깐다.
 #
 #   brew tap willjsw/harness
+#   brew trust willjsw/harness     # 공식이 아닌 탭은 신뢰를 밝혀야 읽힌다
 #   brew install --HEAD harness
 #
 # **PATH 에 따로 등록할 것이 없다.** Homebrew 가 bin 을 이미 PATH 에 두므로
