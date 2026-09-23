@@ -16,7 +16,7 @@
 # 그 리포를 받은 다른 사람이 돌리지 못한다. `env python3` 로 두고, 대신
 # depends_on 으로 쓸 수 있는 python 이 PATH 에 있게 한다.
 class Harness < Formula
-  desc "설정 하나에서 AI 개발 하네스를 만드는 CLI"
+  desc "Generate an AI development harness from one config file"
   homepage "https://github.com/willjsw/harness"
   license "MIT"
   head "https://github.com/willjsw/harness.git", branch: "main"
@@ -31,14 +31,15 @@ class Harness < Formula
 
   def caveats
     <<~EOS
-      프로젝트에 설치하려면 그 리포에서:
+      To set up a project, run this inside that repository:
         harness install
         git config core.hooksPath script/githooks
         harness doctor
 
-      `harness install` 은 이 실행 파일과 템플릿을 그 리포의 `.harness/` 로 복사한다.
-      그 사본이 그 리포의 정본이고 커밋된다 — 전역 CLI 를 올려도 따라가지 않는다.
-      받아서 돌리는 사람에게도 python3 3.11 이상이 필요하다.
+      `harness install` copies this executable and its templates into the
+      repository's `.harness/`, and that copy is committed. It is the canonical
+      version for that repository — upgrading the global CLI does not reach it.
+      Anyone who clones that repository also needs python3 3.11 or newer.
     EOS
   end
 
