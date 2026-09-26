@@ -25,8 +25,10 @@ class Harness < Formula
   depends_on "python@3.13"
 
   def install
+    # 하네스 자체는 리포의 src/ 아래에 있다 — 리포 루트는 그 리포 자신의 하네스(harness.toml·.ai/·script/)가 쓴다.
+    # bin/harness 가 ../templates 와 ../ui 를 읽으므로 셋을 같은 깊이로 libexec 에 넣는다.
     # ui 는 `harness start-server` 가 쓴다. node_modules 는 첫 실행이 npm install 로 채운다.
-    libexec.install "bin", "templates", "harness.toml", "ui"
+    libexec.install "src/bin" => "bin", "src/templates" => "templates", "src/ui" => "ui"
     bin.install_symlink libexec/"bin/harness"
   end
 
