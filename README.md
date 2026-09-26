@@ -17,6 +17,15 @@ brew install --HEAD harness
 
 **PATH 에 따로 등록할 것이 없다.** Homebrew 가 `bin` 을 이미 PATH 에 둔다.
 
+## 업데이트
+
+```bash
+brew update
+brew upgrade --fetch-HEAD harness
+```
+
+`--HEAD` 설치는 버전이 없어 `--fetch-HEAD` 를 줘야 원격 main 의 새 커밋을 본다.
+
 ## 릴리스
 
 지금은 `head` 만 있어 `--HEAD` 로 설치한다. 안정 버전을 내려면 하네스 리포에 태그를 올리고

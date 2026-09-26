@@ -25,12 +25,16 @@ class Harness < Formula
   depends_on "python@3.13"
 
   def install
-    libexec.install "bin", "templates", "harness.toml"
+    # ui 는 `harness start-server` 가 쓴다. node_modules 는 첫 실행이 npm install 로 채운다.
+    libexec.install "bin", "templates", "harness.toml", "ui"
     bin.install_symlink libexec/"bin/harness"
   end
 
   def caveats
     <<~EOS
+      To upgrade to the latest commit on main:
+        brew update && brew upgrade --fetch-HEAD harness
+
       To set up a project, run this inside that repository:
         harness install
         git config core.hooksPath script/githooks
